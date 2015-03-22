@@ -68,6 +68,7 @@
     <Content Include="ArrayData.html" />
     <Content Include="css\Default.css" />
     <Content Include="Default.html" />
+    <Content Include="FirstApp.html" />
     <Content Include="js\d3.js" />
     <Content Include="js\d3.min.js" />
     <Content Include="Web.config" />
