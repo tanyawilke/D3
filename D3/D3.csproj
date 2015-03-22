@@ -65,6 +65,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ArrayData.html" />
     <Content Include="css\Default.css" />
     <Content Include="Default.html" />
     <Content Include="js\d3.js" />

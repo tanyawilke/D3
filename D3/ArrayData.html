@@ -1,0 +1,35 @@
+﻿<!doctype html>
+<html>
+<head>
+    <title></title>
+    <script src="js/d3.js"></script>
+    <link href="css/Default.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="borderdiv"></div>
+    <div id="someDiv"></div>
+    <script>
+        var someData = ["filler", "filler", "filler", "filler"];
+        d3.select("body").selectAll("div")
+        .data(someData)
+        .enter()
+        .append("div")
+        .html("Wow")
+        .append("span")
+        .html("Even More Wow")
+        .style("font-weight", "900");
+
+        d3.selectAll('div').remove();
+
+        someNumbers = [17, 82, 9, 500, 40]
+
+        smallerNumbers = someNumbers.filter(
+        function (el) { return el <= 40 ? this : null });
+        d3.select("body").selectAll("div")
+        .data(smallerNumbers)
+        .enter()
+        .append("div")
+        .html(function (d) { return d });
+    </script>
+</body>
+</html>
