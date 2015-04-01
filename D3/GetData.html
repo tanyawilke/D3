@@ -4,10 +4,27 @@
     <title></title>
     <script src="js/d3.js"></script>
 </head>
-<body>
-    <script>
-        d3.csv("Cities.csv", function (data) { console.log(data); });
-        d3.json("Tweets.json", function (data) { console.log(data); });
-    </script>
-</body>
+    <body>
+        <div id="dvName"></div>
+        <script>
+            d3.csv("Cities.csv", function (data) { console.log(data); });
+            d3.json("Tweets.json", function (data) { console.log(data); });
+        </script>
+        
+        <p>How to create a JavaScript object array.</p>
+
+        <p id="demo"></p>
+
+        <script>
+            var text = '{ "employees" : [' +
+             '{ "firstName":"John" , "lastName":"Doe" },' +
+             '{ "firstName":"Anna" , "lastName":"Smith" },' +
+             '{ "firstName":"Peter" , "lastName":"Jones" } ]}';
+
+            var obj = JSON.parse(text);
+            document.getElementById("demo").innerHTML =
+            obj.employees[0].firstName + " " + obj.employees[1].lastName;
+        </script>
+
+    </body>
 </html>
