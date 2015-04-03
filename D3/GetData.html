@@ -8,7 +8,7 @@
         <div id="dvName"></div>
         <script>
             d3.csv("Cities.csv", function (data) { console.log(data); });
-            d3.json("Tweets.json", function (data) { console.log(data); });
+            d3.json("Tweets.json", function (data) { console.log(data); });            
         </script>
         
         <p>How to create a JavaScript object array.</p>
@@ -24,6 +24,32 @@
             var obj = JSON.parse(text);
             document.getElementById("demo").innerHTML =
             obj.employees[0].firstName + " " + obj.employees[1].lastName;
+
+            var sampleArray = [423, 124, 66, 424, 58, 10, 900, 44, 1];
+            var qScale = d3.scale.quantile().domain(sampleArray).range([0, 1, 2]);
+            qScale(423);
+            qScale(20);
+            qScale(10000);
+
+            var qScale1 = d3.scale.quantile().domain(sampleArray).range(["small", "medium", "large"]);
+            qScale1(68);
+            qScale1(20);
+            qScale1(10000);
+
+            d3.json("Tweets.json", function (data) {
+                var tweetData = data.tweets;
+                var nestedTweets = d3.nest()
+                .key(function (el) { return el.user })
+                .entries(tweetData);
+            });
+
+            var testArray = [88, 10000, 1, 75, 12, 35];
+
+            d3.csv("Cities.csv", function (data) {
+                d3.min(testArray, function (el) { return el });
+                d3.max(testArray, function (el) { return el });
+                d3.mean(testArray, function (el) { return el });
+            });
         </script>
 
     </body>

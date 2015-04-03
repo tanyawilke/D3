@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="js/d3.js"></script>
+</head>
+<body>
+    <script>
+        d3.csv("cities.csv", function (error, data) { dataViz(data); });
+
+        function dataViz(incomingData) {
+            d3.select("body").selectAll("div.cities")
+            .data(incomingData)
+            .enter()
+            .append("div")
+            .attr("class","cities")
+            .html(function(d,i) { return d.label; });
+        }
+    </script>
+</body>
+</html>
