@@ -62,13 +62,25 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="DataBinding.html" />
+    <Content Include="images\Argentina.png" />
+    <Content Include="images\Brazil.png" />
+    <Content Include="images\Germany.png" />
+    <Content Include="images\Ghana.png" />
+    <Content Include="images\Japan.png" />
+    <Content Include="images\Netherlands.png" />
+    <Content Include="images\Spain.png" />
+    <Content Include="images\Uruguay.png" />
+    <Content Include="js\colorbrewer.js" />
+    <Content Include="js\soccerviz.js" />
     <Content Include="packages.config" />
+    <Content Include="worldcup.html" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+    <Content Include="worldcup.csv" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="ArrayData.html" />
