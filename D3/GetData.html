@@ -50,6 +50,12 @@
                 d3.max(testArray, function (el) { return el });
                 d3.mean(testArray, function (el) { return el });
             });
+
+            d3.csv("Cities.csv", function (data) {
+                d3.min(data, function (el) { return +el.population });
+                d3.max(data, function (el) { return +el.population });
+                d3.mean(data, function (el) { return +el.population });
+            });
         </script>
 
     </body>

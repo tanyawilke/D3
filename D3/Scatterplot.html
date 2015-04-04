@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>D3 in Action Chapter 2 - Example 11</title>
+    <meta charset="utf-8" />
+    <script src="js/d3.js"></script>
+    <style>
+        svg {
+            height: 500px;
+            width: 500px;
+            border: 1px solid gray;
+        }
+    </style>
+</head>
+<body>
+
+    <div>
+        <svg>
+        </svg>
+    </div>
+
+    <script>
+        d3.json("tweets.json", function (error, data) { dataViz(data.tweets) });
+
+        function dataViz(incomingData) {
+
+            incomingData.forEach(function (el) {
+                //Creates an impact score by totaling the number of favorites and retweets
+                el.impact = el.favorites.length + el.retweets.length
+                //Transforms the ISO 8906–compliant string into a date datatype
+                el.tweetTime = new Date(el.timestamp);
+            })
+
+            var maxImpact = d3.max(incomingData, function (el) { return el.impact });
+            //Returns the earliest and latest times for a scale
+            var startEnd = d3.extent(incomingData, function (el) { return el.tweetTime });
+            var timeRamp = d3.time.scale().domain(startEnd).range([20, 480]);
+            var yScale = d3.scale.linear().domain([0, maxImpact]).range([0, 460]);
+            var radiusScale = d3.scale.linear().domain([0, maxImpact]).range([1, 20]);
+            //Builds a scale that maps impact to a ramp from white to dark red
+            var colorScale = d3.scale.linear().domain([0, maxImpact]).range(["white", "#990000"]);
+
+            d3.select("svg")
+                .selectAll("circle")
+                .data(incomingData)
+                .enter()
+                .append("circle")
+                //Size, color, and vertical position will all be based on impact
+                .attr("r", function (d) { return radiusScale(d.impact) })
+                .attr("cx", function (d, i) { return timeRamp(d.tweetTime) })
+                .attr("cy", function (d) { return 480 - yScale(d.impact) })
+                .style("fill", function (d) { return colorScale(d.impact) })
+                .style("stroke", "black")
+                .style("stroke-width", "1px")
+        }
+    </script>
+</body>
+
+</html>
